@@ -35,6 +35,13 @@
 		System.out.println(totalTd +" <- totalTd CaahBookListByMonth.jsp");
 	%>
 	<div>
+		<!-- LoginController.java에 sessionMemberId 담았고, session에 담아둔 sessionMemberId를 받아서 출력 -->
+		<a href="<%=request.getContextPath()%>/SelectMemberOneController"><%=session.getAttribute("sessionMemberId")%></a>님 반갑습니다.
+		<!-- 로그아웃을 누르면 LogoutController로 이동  -->
+		<a href="<%=request.getContextPath()%>/LogoutController">로그아웃</a>
+	</div>
+	
+	<div>
 		<a href="<%=request.getContextPath() %>/TagController">tags</a>
 	</div>
 	<h2><%=y%>년 <%=m%>월</h2>

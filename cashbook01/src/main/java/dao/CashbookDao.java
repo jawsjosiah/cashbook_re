@@ -14,6 +14,7 @@ import vo.Cashbook;
 
 public class CashbookDao {
 	public int deleteCashBook(int cashbookNo) {
+		// 쿼리문 수정 필요함 ( 2022.04.22 )  
 		// 삭제한 행 
 		int row = 0;
 		
@@ -23,7 +24,7 @@ public class CashbookDao {
 		
 		String sql = "DELETE FROM cashbook WHERE cashbook_no=?";
 		
-		String dburl = "jdbc:mariadb://localhost:3307/cashbook"; // DB 주소
+		String dburl = "jdbc:mariadb://localhost:3306/cashbook"; // DB 주소
 		String dbuser = "root"; // DB 아이디
 		String dbpw = "java1234"; // DB 패스워드
 		try { 
@@ -96,7 +97,7 @@ public class CashbookDao {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, cashbookNo);
 			
@@ -135,7 +136,7 @@ public class CashbookDao {
 		ResultSet rs = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
 			conn.setAutoCommit(false); // 자동커밋을 해제
 			
 			String sql = "INSERT INTO cashbook(cash_date,kind,cash,memo,update_date,create_date)"
@@ -164,7 +165,7 @@ public class CashbookDao {
 				stmt2.executeUpdate();
 			}
 			
-			conn.commit();
+			
 		} catch(Exception e) {
 			try {
 				conn.rollback();
@@ -209,7 +210,7 @@ public class CashbookDao {
 				+ "		 ORDER BY DAY(cash_date) ASC, kind ASC";
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, y);
 			stmt.setInt(2, m);

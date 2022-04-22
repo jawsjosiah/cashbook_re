@@ -10,12 +10,29 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.CashbookDao;
 
 @WebServlet("/CashBookListByMonthController")
 public class CashBookListByMonthController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 현재 연결한 클라이언트(브라우저)에 대한 세션값을 받아옴. 
+		HttpSession session = request.getSession();
+		
+		// LoginController.'doPost()'로부터 sessionMemberId 받았음. 
+		String sessionMemberId = (String)session.getAttribute("sessionMemberId");
+		System.out.println(sessionMemberId + " <-- sessionMemberId ( CashBookListByMonthController.doGet() )");
+		
+		if(sessionMemberId == null) {
+			// 로그인 되지 않은 경우  
+			// LoginController로 이동. LoginController.doGet()이 반응 
+			response.sendRedirect(request.getContextPath()+"/LoginController");
+			
+			// else문 대신 사용. 메서드 종료 
+			return;
+		}
+		
 		// 1) 월별 가계부 리스트 요청 분석
 		Calendar now = Calendar.getInstance(); // ex) 2022.04.19
 		int y = now.get(Calendar.YEAR);
