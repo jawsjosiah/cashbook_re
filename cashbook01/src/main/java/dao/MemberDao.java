@@ -29,7 +29,7 @@ public class MemberDao {
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
 			conn.setAutoCommit(false); // 자동커밋을 해제
 			
 			stmt = conn.prepareStatement(sql);
@@ -74,19 +74,128 @@ public class MemberDao {
 		ResultSet rs = null; 
 		
 		String sql = "SELECT"
-				+ "		member_id cashbookNo"
-				+ "		, member_pw cashDate"
+				+ "		member_id memberId"
+				+ "		, member_pw memberPw"
 				+ "		, create_date createDate"
 				+ "	FROM member"
 				+ "	WHERE member_id = ?";
 		
-		return null;
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+						
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, sessionMemberId); 
+			
+			rs = stmt.executeQuery(); // 쿼리 저장
+			
+			if(rs.next()) { // 객체에 쿼리의 정보들 받아서 저장
+				// 캡슐 
+				member = new Member();
+				member.setMemberId(rs.getString("memberId"));
+				member.setMemberPw(rs.getString("memberPw"));
+				member.setCreateDate(rs.getString("createDate"));
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return member;
 		
 	}
 	
 	// 회원 수정
-	// 회원 탈퇴 
+	public int updateMemberPw(Member member) {
+			
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		// ResultSet rs = null; 
+		
+		int row = 0; // 쿼리가 실행되어 변화가 있었는지 확인하기 위한 변수 
+		
+		String sql = "UPDATE member SET member_pw = PASSWORD(?) WHERE member_id = ? ";
+		
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn.setAutoCommit(false); // 자동 커밋을 해제 
+			
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, member.getMemberPw());
+			stmt.setString(2, member.getMemberId()); 
+			
+			row = stmt.executeUpdate(); // 쿼리를 통해 결과가 수정되면 정수값 반환된다 
+			
+			
+			conn.commit();
+		} catch (Exception e) { 
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return row;
+		
+	}
 	
+	// 회원 탈퇴 
+	public int deleteMember(Member member) {
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		int row = 0;
+		
+		String sql = "DELETE FROM member WHERE member_id = ? AND member_pw = PASSWORD(?)";
+		
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn.setAutoCommit(false); // 자동커밋을 해제
+			
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, member.getMemberId());
+			stmt.setString(2, member.getMemberPw()); 
+			
+			row = stmt.executeUpdate(); // 쿼리 저장
+			
+			
+			conn.commit();
+		} catch (Exception e) {
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO: handle exception
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return row;
+	}
 	
 	// 로그인 
 	public String selectMemberByIdPw(Member member) {
@@ -99,7 +208,7 @@ public class MemberDao {
 		String sql = "SELECT member_id memberId FROM member WHERE member_id=? AND member_pw=PASSWORD(?)";
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
 			
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, member.getMemberId());

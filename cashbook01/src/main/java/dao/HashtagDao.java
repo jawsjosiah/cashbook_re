@@ -25,7 +25,7 @@ public class HashtagDao {
 	            GROUP BY tag) t
 	          */
 	         Class.forName("org.mariadb.jdbc.Driver");
-	         conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+	         conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
 	         String sql = "SELECT t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) rank"
 	               + "            FROM"
 	               + "            (SELECT tag, COUNT(*) cnt"
@@ -72,7 +72,7 @@ public class HashtagDao {
 			 */
 			// 동적 쿼리? 
 			Class.forName("org.mariadb.jdbc.Driver");
-	        conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+	        conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
 			String sql = "SELECT kind, t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) \"ranking\""
 					+ " FROM "
 					+ " (SELECT c.kind kind, tag, COUNT(*) cnt "
@@ -121,7 +121,7 @@ public class HashtagDao {
 				+ " GROUP BY t.tag) t";
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-	        conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+	        conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, beginDate);
 			stmt.setString(2, endDate);
@@ -172,7 +172,7 @@ public class HashtagDao {
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
 			
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, tag);
