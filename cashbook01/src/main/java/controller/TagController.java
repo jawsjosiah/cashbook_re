@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.HashtagDao;
 
-@WebServlet("/TagController")
+@WebServlet("/tagController")
 public class TagController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,7 +22,7 @@ public class TagController extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		
-		request.getRequestDispatcher("WEB-INF/view/TagList.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/view/tagList.jsp").forward(request, response);
 	}
 
 }

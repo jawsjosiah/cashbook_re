@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import dao.MemberDao;
 import vo.Member;
 
-@WebServlet("/DeleteMemberController")
+@WebServlet("/deleteMemberController")
 public class DeleteMemberController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +25,7 @@ public class DeleteMemberController extends HttpServlet {
 		// 로그아웃 상태라면 
 		if(sessionMemberId == null) {
 			
-			response.sendRedirect(request.getContextPath()+"/LogoutController");
+			response.sendRedirect(request.getContextPath()+"/logoutController");
 			
 			return;
 		}
@@ -47,7 +47,7 @@ public class DeleteMemberController extends HttpServlet {
 		// 로그아웃 상태라면 
 		if(sessionMemberId == null) {
 			
-			response.sendRedirect(request.getContextPath()+"/LogoutController");
+			response.sendRedirect(request.getContextPath()+"/logoutController");
 			
 			return;
 		}
@@ -72,7 +72,7 @@ public class DeleteMemberController extends HttpServlet {
 		int row = memberDao.deleteMember(member);
 		System.out.println(row + " <-- row ( DeleteMemberPwController.doPost() )"); 
 		
-		response.sendRedirect(request.getContextPath()+"/LogoutController");
+		response.sendRedirect(request.getContextPath()+"/logoutController");
 	}
 
 }

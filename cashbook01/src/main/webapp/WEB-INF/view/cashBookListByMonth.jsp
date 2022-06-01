@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CashBookListByMonth</title>
+<title>cashBookListByMonth</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 	<!-- jQuery library -->
@@ -36,18 +36,18 @@
 	%>
 	<div>
 		<!-- LoginController.java에 sessionMemberId 담았고, session에 담아둔 sessionMemberId를 받아서 출력 -->
-		<a href="<%=request.getContextPath()%>/SelectMemberOneController"><%=session.getAttribute("sessionMemberId")%></a>님 반갑습니다.
+		<a href="<%=request.getContextPath()%>/selectMemberOneController"><%=session.getAttribute("sessionMemberId")%></a>님 반갑습니다.
 		<!-- 로그아웃을 누르면 LogoutController로 이동  -->
-		<a href="<%=request.getContextPath()%>/LogoutController">로그아웃</a>
+		<a href="<%=request.getContextPath()%>/logoutController">로그아웃</a>
 	</div>
 	
 	<div>
-		<a href="<%=request.getContextPath() %>/TagController">tags</a>
+		<a href="<%=request.getContextPath() %>/tagController">tags</a>
 	</div>
 	<h2><%=y%>년 <%=m%>월</h2>
 	<div>
-		<a href="<%=request.getContextPath()%>/CashBookListByMonthController?y=<%=y%>&m=<%=m-1%>">이전달</a>
-		<a href="<%=request.getContextPath()%>/CashBookListByMonthController?y=<%=y%>&m=<%=m+1%>">다음달</a>
+		<a href="<%=request.getContextPath()%>/cashBookListByMonthController?y=<%=y%>&m=<%=m-1%>">이전달</a>
+		<a href="<%=request.getContextPath()%>/cashBookListByMonthController?y=<%=y%>&m=<%=m+1%>">다음달</a>
 	</div>
 	<!-- 
 		1) 이번날 1일의 요일 firstDayYoil -> startBlank -> 일 0, 월 1, 화 2, ... 토 6
@@ -84,7 +84,7 @@
 				%>
 							<td class="<%=c%>">
 								<%=i-startBlank%>
-								<a href="<%=request.getContextPath()%>/InsertCashBookController?y=<%=y%>&m=<%=m%>&d=<%=i-startBlank%>" class="btn btn-light">입력</a>
+								<a href="<%=request.getContextPath()%>/insertCashBookController?y=<%=y%>&m=<%=m%>&d=<%=i-startBlank%>" class="btn btn-light">입력</a>
 								<div>
 									<%
 										// 해당 날짜의 cashbook 목록 출력
@@ -92,7 +92,7 @@
 											if((Integer)map.get("day") == (i-startBlank)) {
 									%>
 												<div>
-													<a href="<%=request.getContextPath()%>/CashBookOneController?cashbookNo=<%=map.get("cashbookNo")%>">
+													<a href="<%=request.getContextPath()%>/cashBookOneController?cashbookNo=<%=map.get("cashbookNo")%>">
 														[<%=map.get("kind")%>] 
 														<%=map.get("cash")%>원
 														<%=map.get("memo")%>...

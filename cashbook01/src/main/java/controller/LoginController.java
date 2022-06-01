@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import dao.MemberDao;
 import vo.Member;
 
-@WebServlet("/LoginController")
+@WebServlet("/loginController")
 public class LoginController extends HttpServlet {
 	
 	// 로그인 폼 
@@ -28,13 +28,13 @@ public class LoginController extends HttpServlet {
 		if(sessionMemberId != null) {
 			// 이미 로그인이 되어있는 상태
 			// 가계부 달력으로 이동 
-			response.sendRedirect(request.getContextPath()+"/CashBookListByMonthController");
+			response.sendRedirect(request.getContextPath()+"/cashBookListByMonthController");
 			// 메서드 종료 
 			return;
 		}
 		
 		// 로그인 되어있는(?) -> 안되어있는(수업 이후 개인적으로 주석 수정) 멤버라면 리다이렉트
-		request.getRequestDispatcher("/WEB-INF/view/Login.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
 	}
 
 	// 로그인 액션 
@@ -65,7 +65,7 @@ public class LoginController extends HttpServlet {
 			System.out.println("로그인 실패 <-- LoginController.doPost() ");
 			
 			// sendRedirect는 당연히 get방식 
-			response.sendRedirect(request.getContextPath()+"/LoginController");
+			response.sendRedirect(request.getContextPath()+"/loginController");
 			
 			// else문 대신 사용한 return 
 			return;
@@ -78,7 +78,7 @@ public class LoginController extends HttpServlet {
 		session.setAttribute("sessionMemberId", returnMemberId);
 		
 		
-		response.sendRedirect(request.getContextPath()+"/CashBookListByMonthController");
+		response.sendRedirect(request.getContextPath()+"/cashBookListByMonthController");
 	}
 
 }

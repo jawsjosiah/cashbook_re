@@ -13,7 +13,7 @@
 </head>
 <body>
 	<h1>비밀 번호 변경</h1>
-	<form action="<%=request.getContextPath()%>/UpdateMemberPwController" method="post">
+	<form action="<%=request.getContextPath()%>/updateMemberPwController" method="post">
 	<table border="1">
 		<tr>
 			<td>아이디</td>

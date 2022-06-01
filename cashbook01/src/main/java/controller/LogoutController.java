@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/LogoutController")
+@WebServlet("/logoutController")
 public class LogoutController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,7 +23,7 @@ public class LogoutController extends HttpServlet {
 		session.invalidate();
 		*/
 		
-		response.sendRedirect(request.getContextPath()+"/LoginController");
+		response.sendRedirect(request.getContextPath()+"/loginController");
 	}
 
 }

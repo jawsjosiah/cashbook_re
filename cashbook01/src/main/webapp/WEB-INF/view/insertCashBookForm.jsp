@@ -3,11 +3,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>insertCashBookForm</title>
 </head>
 <body>
 	<h1>insertCashBook</h1>
-	<form action="<%=request.getContextPath()%>/InsertCashBookController" method="post">
+	<form action="<%=request.getContextPath()%>/insertCashBookController" method="post">
 		<table border="1">
 			<tr>
 				<td>날짜</td>

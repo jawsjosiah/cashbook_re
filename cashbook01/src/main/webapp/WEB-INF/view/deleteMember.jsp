@@ -12,7 +12,7 @@
 </head>
 <body>
 	<h1>회원 탈퇴</h1>
-	<form action="<%=request.getContextPath() %>/DeleteMemberController" method="post">
+	<form action="<%=request.getContextPath() %>/deleteMemberController" method="post">
 		<table border="1">
 			<tr>
 				<td>삭제할 아이디 확인</td>

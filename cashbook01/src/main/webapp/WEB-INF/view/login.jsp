@@ -3,11 +3,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Login</title>
+<title>login</title>
 </head>
 <body>
 	<h1>로그인</h1>
-	<form action="<%=request.getContextPath() %>/LoginController" method="post">
+	<form action="<%=request.getContextPath() %>/loginController" method="post">
 		<table border="1">
 			<tr>
 				<td>memberId</td>
@@ -21,7 +21,7 @@
 		<button type="submit">로그인</button>
 	</form>
 	
-	<a href="<%=request.getContextPath() %>/InsertMemberController">
+	<a href="<%=request.getContextPath() %>/insertMemberController">
 		<p>회원 가입</p>
 	</a>
 	

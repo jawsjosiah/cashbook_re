@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import dao.MemberDao;
 import vo.Member;
 
-@WebServlet("/UpdateMemberPwController")
+@WebServlet("/updateMemberPwController")
 public class UpdateMemberPwController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +25,7 @@ public class UpdateMemberPwController extends HttpServlet {
 		// 로그아웃 상태라면 
 		if(sessionMemberId == null) {
 			
-			response.sendRedirect(request.getContextPath()+"/LogoutController");
+			response.sendRedirect(request.getContextPath()+"/logoutController");
 			
 			return;
 		}
@@ -50,7 +50,7 @@ public class UpdateMemberPwController extends HttpServlet {
 		// 로그아웃 상태라면 
 		if(sessionMemberId == null) {
 			
-			response.sendRedirect(request.getContextPath()+"/LogoutController");
+			response.sendRedirect(request.getContextPath()+"/logoutController");
 			
 			return;
 		}
@@ -75,7 +75,7 @@ public class UpdateMemberPwController extends HttpServlet {
 		int row = memberDao.updateMemberPw(member);
 		System.out.println(row + " <-- row ( UpdateMemberPwController.doPost() )"); 
 		
-		response.sendRedirect(request.getContextPath()+"/LogoutController");
+		response.sendRedirect(request.getContextPath()+"/logoutController");
 	}
 
 }

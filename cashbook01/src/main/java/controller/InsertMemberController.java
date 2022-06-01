@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import dao.MemberDao;
 import vo.Member;
 
-@WebServlet("/InsertMemberController")
+@WebServlet("/insertMemberController")
 public class InsertMemberController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class InsertMemberController extends HttpServlet {
 		if(sessionMemberId != null) {
 			// 이미 로그인이 되어있는 상태 
 			// 가계부 달력으로 이동 
-			response.sendRedirect(request.getContextPath()+"/CashBookListByMonthController");
+			response.sendRedirect(request.getContextPath()+"/cashBookListByMonthController");
 			// 메서드 종료 
 			return;
 		}
@@ -47,7 +47,7 @@ public class InsertMemberController extends HttpServlet {
 		
 		// 만약 로그인 되어있다면 가계부 페이지로 보낸다 
 		if(sessionMemberId != null) {
-			response.sendRedirect(request.getContextPath()+"/CashBookListByMonthController");
+			response.sendRedirect(request.getContextPath()+"/cashBookListByMonthController");
 			return; 
 		}
 		
@@ -70,7 +70,7 @@ public class InsertMemberController extends HttpServlet {
 		// 
 		memberDao.insertMember(member);
 				
-		response.sendRedirect(request.getContextPath()+"/LoginController");
+		response.sendRedirect(request.getContextPath()+"/loginController");
 		
 		
 	}

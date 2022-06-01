@@ -29,7 +29,7 @@ public class MemberDao {
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			conn.setAutoCommit(false); // 자동커밋을 해제
 			
 			stmt = conn.prepareStatement(sql);
@@ -82,7 +82,7 @@ public class MemberDao {
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 						
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, sessionMemberId); 
@@ -125,7 +125,7 @@ public class MemberDao {
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			conn.setAutoCommit(false); // 자동 커밋을 해제 
 			
 			stmt = conn.prepareStatement(sql);
@@ -167,7 +167,7 @@ public class MemberDao {
 		
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			conn.setAutoCommit(false); // 자동커밋을 해제
 			
 			stmt = conn.prepareStatement(sql);
@@ -208,7 +208,7 @@ public class MemberDao {
 		String sql = "SELECT member_id memberId FROM member WHERE member_id=? AND member_pw=PASSWORD(?)";
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/cashbook","root","java1234");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, member.getMemberId());

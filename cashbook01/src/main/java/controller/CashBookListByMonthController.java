@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.CashbookDao;
 
-@WebServlet("/CashBookListByMonthController")
+@WebServlet("/cashBookListByMonthController")
 public class CashBookListByMonthController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 현재 연결한 클라이언트(브라우저)에 대한 세션값을 받아옴. 
@@ -105,7 +105,7 @@ public class CashBookListByMonthController extends HttpServlet {
 		request.setAttribute("y", y);
 		request.setAttribute("m", m);
 		// 3) 뷰 포워딩
-		request.getRequestDispatcher("/WEB-INF/view/CashBookListByMonth.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/view/cashBookListByMonth.jsp").forward(request, response);
 	}
 
 }

@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>memberOne</title>
 </head>
 <body>
 	<h1>memberOne</h1>
@@ -32,7 +32,7 @@
 	</table>
 	
 	<!-- 넘길 값 확인 필요함 -->
-	<a href="<%=request.getContextPath() %>/UpdateMemberPwController">비밀번호 수정</a>
-	<a href="<%=request.getContextPath() %>/DeleteMemberController">회원 정보 삭제</a>
+	<a href="<%=request.getContextPath() %>/updateMemberPwController">비밀번호 수정</a>
+	<a href="<%=request.getContextPath() %>/deleteMemberController">회원 정보 삭제</a>
 </body>
 </html>

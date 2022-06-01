@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.CashbookDao;
 
-@WebServlet("/DeleteCashBookController")
+@WebServlet("/deleteCashBookController")
 public class DeleteCashBookController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

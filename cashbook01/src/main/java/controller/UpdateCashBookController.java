@@ -7,16 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/cashBookOneController")
-public class CashBookOneController extends HttpServlet {
+@WebServlet("/updateCashBookController")
+public class UpdateCashBookController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// CashBookListByMonth.jsp에서 넘겨받은 값 저장 
-		int cashbookNo = Integer.parseInt(request.getParameter("cashbookNo"));
-		request.getRequestDispatcher("/WEB-INF/view/cashBookOne.jsp").forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doGet(request, response);
 	}
 

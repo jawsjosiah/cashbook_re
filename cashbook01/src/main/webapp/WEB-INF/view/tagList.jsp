@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>tagList</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -16,20 +16,20 @@
 	<div class="row container-fluid p-3 my-3 border ">
 	
 		<div class="col-sm-3">
-			<h1>tag rank</h1>
+			<h1>해시태그 순위</h1>
 			
 				<table class="table table-bordered">
 					<tr>
-						<th>rank</th>
-						<th>tag</th>
-						<th>cnt</th>
+						<th>순위</th>
+						<th>태그</th>
+						<th>개수</th>
 					</tr>
 					<%
 						for(Map<String,Object> map : list) {
 					%>
 							<tr>
 								<td><%=map.get("rank")%></td>
-								<td><a href="<%=request.getContextPath() %>/SelectTagByTagController?tag=<%=map.get("tag")%>"><%=map.get("tag")%></td>
+								<td><a href="<%=request.getContextPath() %>/selectTagByTagController?tag=<%=map.get("tag")%>"><%=map.get("tag")%></td>
 								<td><%=map.get("cnt")%></td>
 							</tr>
 					<%
@@ -40,7 +40,7 @@
 			
 		<div class="col-sm-9">
 			<h1> 수입/지출별 검색 </h1>	
-				<form action="<%=request.getContextPath()%>/SelectTagByKindController">
+				<form action="<%=request.getContextPath()%>/selectTagByKindController">
 					
 						<table class="table table-bordered">
 							<tr>
@@ -52,7 +52,7 @@
 							</tr>
 							<tr>
 								<td colspan="2">
-									<button type="submit">검색</button>
+									<button type="submit" class="btn btn-primary">검색</button>
 								</td>
 							</tr>
 						</table>
@@ -61,7 +61,7 @@
 		
 		
 			<h1> 날짜별 검색 </h1>
-				<form action="<%=request.getContextPath()%>/SelectTagByTermController">
+				<form action="<%=request.getContextPath()%>/selectTagByTermController">
 					
 					<table class="table table-bordered">
 							<tr>
@@ -73,7 +73,7 @@
 							</tr>
 							<tr>
 								<td colspan="2">
-									<button type="submit">검색</button>
+									<button type="submit" class="btn btn-primary">검색</button>
 								</td>
 							</tr>
 						</table>
@@ -83,7 +83,7 @@
 		
 			<div>
 					<button type="button" class="btn-info">
-						<a href="<%=request.getContextPath() %>/CashBookListByMonthController">
+						<a href="<%=request.getContextPath() %>/cashBookListByMonthController">
 							<p class="text-white">가계부</p>
 						</a>
 					</button>

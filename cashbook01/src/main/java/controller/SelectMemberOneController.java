@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import dao.MemberDao;
 import vo.Member;
 
-@WebServlet("/SelectMemberOneController")
+@WebServlet("/selectMemberOneController")
 public class SelectMemberOneController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,7 +26,7 @@ public class SelectMemberOneController extends HttpServlet {
 		
 		// 로그아웃 상태라면 
 		if(sessionMemberId == null) {
-			response.sendRedirect(request.getContextPath()+"/LogoutController");
+			response.sendRedirect(request.getContextPath()+"/logoutController");
 			return;
 		}
 		

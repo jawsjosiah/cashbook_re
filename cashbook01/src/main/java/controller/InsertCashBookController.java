@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.CashbookDao;
 import vo.Cashbook;
 
-@WebServlet("/InsertCashBookController")
+@WebServlet("/insertCashBookController")
 public class InsertCashBookController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String y = request.getParameter("y");
@@ -62,7 +62,7 @@ public class InsertCashBookController extends HttpServlet {
 		CashbookDao cashbookDao = new CashbookDao();
 		cashbookDao.insertCashbook(cashbook, hashtag);
 		
-		response.sendRedirect(request.getContextPath()+"/CashBookListByMonthController");
+		response.sendRedirect(request.getContextPath()+"/cashBookListByMonthController");
 	}
 }
 

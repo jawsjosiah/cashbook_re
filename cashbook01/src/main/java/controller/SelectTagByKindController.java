@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.HashtagDao;
 
 
-@WebServlet("/SelectTagByKindController")
+@WebServlet("/selectTagByKindController")
 public class SelectTagByKindController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

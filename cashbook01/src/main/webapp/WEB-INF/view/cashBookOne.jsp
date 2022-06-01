@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>cashBookOne</title>
 </head>
 <body>
 	<h1>CashBookOne</h1>
@@ -46,9 +46,9 @@
 			</tr>
 		
 		</table>
-	<a href="<%=request.getContextPath()%>/CashBookListByMonthController" type ="button">리스트</a>	
-	<a href="<%=request.getContextPath()%>/UpdateCashBookController?cashbookNo=<%=cashbook.getCashbookNo()%>" type ="button">수정</a>
-	<a href="<%=request.getContextPath()%>/DeleteCashBookController?cashbookNo=<%=cashbook.getCashbookNo()%>" type ="button">삭제</a>
+	<a href="<%=request.getContextPath()%>/cashBookListByMonthController" type ="button">리스트</a>	
+	<a href="<%=request.getContextPath()%>/updateCashBookController?cashbookNo=<%=cashbook.getCashbookNo()%>" type ="button">수정</a>
+	<a href="<%=request.getContextPath()%>/deleteCashBookController?cashbookNo=<%=cashbook.getCashbookNo()%>" type ="button">삭제</a>
 	
 </body>
 </html>

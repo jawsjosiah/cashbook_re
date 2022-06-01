@@ -3,11 +3,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>InsertMember</title>
+<title>insertMember</title>
 </head>
 <body>
 	<h1>회원 가입</h1>
-	<form action="<%=request.getContextPath()%>/InsertMemberController" method="post">
+	<form action="<%=request.getContextPath()%>/insertMemberController" method="post">
 		<table border="1">
 			<tr>
 				<td>아이디 등록</td>
