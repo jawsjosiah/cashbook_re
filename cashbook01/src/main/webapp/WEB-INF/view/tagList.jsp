@@ -82,7 +82,7 @@
 			
 		
 			<div>
-					<button type="button" class="btn-info">
+					<button type="button" class="btn btn-info">
 						<a href="<%=request.getContextPath() %>/cashBookListByMonthController">
 							<p class="text-white">가계부</p>
 						</a>

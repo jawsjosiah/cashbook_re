@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>updateMemberPw</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 	<h1>비밀 번호 변경</h1>
@@ -25,6 +26,6 @@
 		</tr>
 		
 	</table>
-	<button type = "submit">회원 정보 변경</button>
+	<button type = "submit" class="btn btn-outline-success">회원 정보 변경</button>
 </body>
 </html>

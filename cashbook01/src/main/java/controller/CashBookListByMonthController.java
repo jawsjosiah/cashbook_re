@@ -27,7 +27,7 @@ public class CashBookListByMonthController extends HttpServlet {
 		if(sessionMemberId == null) {
 			// 로그인 되지 않은 경우  
 			// LoginController로 이동. LoginController.doGet()이 반응 
-			response.sendRedirect(request.getContextPath()+"/LoginController");
+			response.sendRedirect(request.getContextPath()+"/loginController");
 			
 			// else문 대신 사용. 메서드 종료 
 			return;

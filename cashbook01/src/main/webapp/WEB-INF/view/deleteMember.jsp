@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>deleteMember</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 	<h1>회원 탈퇴</h1>
@@ -23,7 +24,7 @@
 				<td><input type="password" name="memberPw"></td>
 			</tr>
 		</table>
-		<button type="submit">회원 삭제</button>
+		<button type="submit" class="btn btn-outline-danger">회원 삭제</button>
 	</form>
 </body>
 </html>

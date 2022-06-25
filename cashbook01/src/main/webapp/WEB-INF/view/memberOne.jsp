@@ -11,7 +11,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>memberOne</title>
+<title>회원 상세보기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
 	<h1>memberOne</h1>
@@ -32,7 +33,7 @@
 	</table>
 	
 	<!-- 넘길 값 확인 필요함 -->
-	<a href="<%=request.getContextPath() %>/updateMemberPwController">비밀번호 수정</a>
-	<a href="<%=request.getContextPath() %>/deleteMemberController">회원 정보 삭제</a>
+	<a href="<%=request.getContextPath() %>/updateMemberPwController" class="btn btn-outline-primary">비밀번호 수정</a>
+	<a href="<%=request.getContextPath() %>/deleteMemberController" class="btn btn-outline-danger">회원 정보 삭제</a>
 </body>
 </html>
