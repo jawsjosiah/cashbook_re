@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import util.DBUtil;
 import vo.Member;
 
 public class MemberDao {
@@ -26,10 +27,11 @@ public class MemberDao {
 		ResultSet rs = null;
 		
 		String sql = "INSERT INTO member(member_id, member_pw, create_date) values(?, PASSWORD(?), NOW())";
-		
+
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			// Class.forName("org.mariadb.jdbc.Driver");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection(); 
 			conn.setAutoCommit(false); // 자동커밋을 해제
 			
 			stmt = conn.prepareStatement(sql);
@@ -81,8 +83,9 @@ public class MemberDao {
 				+ "	WHERE member_id = ?";
 		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			// Class.forName("org.mariadb.jdbc.Driver");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection(); 
 						
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, sessionMemberId); 
@@ -124,8 +127,9 @@ public class MemberDao {
 		String sql = "UPDATE member SET member_pw = PASSWORD(?) WHERE member_id = ? ";
 		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			// Class.forName("org.mariadb.jdbc.Driver");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection(); 
 			conn.setAutoCommit(false); // 자동 커밋을 해제 
 			
 			stmt = conn.prepareStatement(sql);
@@ -166,8 +170,9 @@ public class MemberDao {
 		String sql = "DELETE FROM member WHERE member_id = ? AND member_pw = PASSWORD(?)";
 		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			// Class.forName("org.mariadb.jdbc.Driver");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection(); 
 			conn.setAutoCommit(false); // 자동커밋을 해제
 			
 			stmt = conn.prepareStatement(sql);
@@ -207,8 +212,9 @@ public class MemberDao {
 		
 		String sql = "SELECT member_id memberId FROM member WHERE member_id=? AND member_pw=PASSWORD(?)";
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			// Class.forName("org.mariadb.jdbc.Driver");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection(); 
 			
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, member.getMemberId());

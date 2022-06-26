@@ -10,12 +10,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import util.DBUtil;
+
 public class HashtagDao {
 	public List<Map<String,Object>> selectTagRankList() {
 	      List<Map<String,Object>> list = new ArrayList<>();
 	      Connection conn = null;
 	      PreparedStatement stmt = null;
 	      ResultSet rs = null;
+	      
+	      
 	      try {
 	         /*
 	             SELECT t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) ranking
@@ -24,8 +28,9 @@ public class HashtagDao {
 	            FROM hashtag
 	            GROUP BY tag) t
 	          */
-	         Class.forName("org.mariadb.jdbc.Driver");
-	         conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+	        //  Class.forName("org.mariadb.jdbc.Driver");
+	         // conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+	    	  conn = DBUtil.getConnection();
 	         String sql = "SELECT t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) rank"
 	               + "            FROM"
 	               + "            (SELECT tag, COUNT(*) cnt"
@@ -59,6 +64,7 @@ public class HashtagDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null; 
 		
+		
 		try {
 			/*
 			 	SELECT kind, t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) "ranking"
@@ -71,8 +77,10 @@ public class HashtagDao {
 			 
 			 */
 			// 동적 쿼리? 
-			Class.forName("org.mariadb.jdbc.Driver");
-	        conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			
+			// Class.forName("org.mariadb.jdbc.Driver");
+	        // conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection();
 			String sql = "SELECT kind, t.tag, t.cnt, RANK() over(ORDER BY t.cnt DESC) \"ranking\""
 					+ " FROM "
 					+ " (SELECT c.kind kind, tag, COUNT(*) cnt "
@@ -119,9 +127,12 @@ public class HashtagDao {
 				+ " ON t.cashbook_no = c.cashbook_no "
 				+ " WHERE c.cash_date BETWEEN STR_TO_DATE(?,'%Y-%m-%d')  AND STR_TO_DATE(?,'%Y-%m-%d')"
 				+ " GROUP BY t.tag) t";
+		
+		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-	        conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			// Class.forName("org.mariadb.jdbc.Driver");
+			//  conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, beginDate);
 			stmt.setString(2, endDate);
@@ -170,10 +181,11 @@ public class HashtagDao {
 				+ "		WHERE tag = ?"
 				+ "		ORDER BY cashDate DESC";
 		
+		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
-			
+			// Class.forName("org.mariadb.jdbc.Driver");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection(); 
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, tag);
 			

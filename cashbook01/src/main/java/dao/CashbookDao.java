@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import util.DBUtil;
 import vo.Cashbook;
 
 public class CashbookDao {
@@ -24,13 +25,18 @@ public class CashbookDao {
 		
 		String sql = "DELETE FROM cashbook WHERE cashbook_no=?";
 		
+		/*
 		String dburl = "jdbc:mariadb://localhost:3306/cashbook"; // DB 주소
 		String dbuser = "root"; // DB 아이디
 		String dbpw = "mariadb1234"; // DB 패스워드
+		*/
+		
+		
 		try { 
-			Class.forName("org.mariadb.jdbc.Driver");
+			// Class.forName("org.mariadb.jdbc.Driver");
 			
-			conn = DriverManager.getConnection(dburl, dbuser, dbpw);
+			// conn = DriverManager.getConnection(dburl, dbuser, dbpw);
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false); // 자동 커밋을 해제 
 			
 			PreparedStatement stmt3 = null;
@@ -94,10 +100,12 @@ public class CashbookDao {
 				+ "	FROM cashbook"
 				+ "	WHERE cashbook_no = ?";
 		
+		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
+			// Class.forName("org.mariadb.jdbc.Driver");
 			
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection();
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, cashbookNo);
 			
@@ -134,9 +142,12 @@ public class CashbookDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		
+		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			// Class.forName("org.mariadb.jdbc.Driver");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection();
 			conn.setAutoCommit(false); // 자동커밋을 해제
 			
 			String sql = "INSERT INTO cashbook(cash_date,kind,cash,memo,update_date,create_date)"
@@ -208,9 +219,13 @@ public class CashbookDao {
 				+ "		 FROM cashbook"
 				+ "		 WHERE YEAR(cash_date) = ? AND MONTH(cash_date) = ?"
 				+ "		 ORDER BY DAY(cash_date) ASC, kind ASC";
+		
+		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			// Class.forName("org.mariadb.jdbc.Driver");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
+			conn = DBUtil.getConnection();
+			
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, y);
 			stmt.setInt(2, m);
