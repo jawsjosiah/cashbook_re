@@ -12,11 +12,11 @@
 		<table border="1">
 			<tr>
 				<td>memberId</td>
-				<td><input type="text" name="memberId"></td>
+				<td><input type="text" name="memberId" value="admin"></td>
 			</tr>
 			<tr>
 				<td>memberPw</td>
-				<td><input type="password" name="memberPw"></td>
+				<td><input type="password" name="memberPw" value="1111"></td>
 			</tr>
 		</table>
 		<button type="submit" class="btn btn-outline-secondary">로그인</button>

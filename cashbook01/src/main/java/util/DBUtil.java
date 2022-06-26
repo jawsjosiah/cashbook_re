@@ -17,7 +17,7 @@ public class DBUtil {
 			conn = DriverManager.getConnection("jdbc:mariadb://:3306/cashbook","root","mariadb1234");
 			
 			// 로컬 PC에 사용되는 DB 주소 
-			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/sakila","root","mariadb1234");
+			// conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/cashbook","root","mariadb1234");
 			
 			// DB에 연결 
 			System.out.println(conn + "// conn(DBUtil.java)");
